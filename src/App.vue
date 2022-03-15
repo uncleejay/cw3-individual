@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
-                        <h2>MDX Book Store</h2>
+                        <h2>Lesson</h2>
                     </div>
                     <div class="col-md-7">
                         
@@ -25,8 +25,8 @@
         <section id="navigation">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <p>Home | Store</p>
+                    <div style="padding-left: 6rem">
+                        <p>Home / Browse Lessons</p>
                     </div>
                 </div>
             </div>
@@ -72,8 +72,7 @@ export default {
           
             const lessonIndex = this.lessons.findIndex(lesson => lesson._id === lessonID);
             if (lessonIndex != -1) {
-                console.log("heeeree");
-                this.lessons[lessonIndex].space -= 1;       
+                this.lessons[lessonIndex].availablespace -= 1;       
             }
              this.addToCart(lessonID, lesson);
         },
@@ -94,7 +93,7 @@ export default {
             this.cartItems[index].space = this.cartItems[index].space - 1;
             const lessonIndex = this.lessons.findIndex(lesson => lesson._id === this.cartItems[index].lessonID);
             if (lessonIndex != -1) {
-                this.lessons[lessonIndex].space += 1;
+                this.lessons[lessonIndex].availablespace += 1;
             }
             if (this.cartItems[index].space == 0) {
                 this.cartItems.splice(index, 1);
@@ -118,7 +117,7 @@ export default {
         },
         searchLessons: function () {
             
-            fetch("https://cst3145-cw2-backend.herokuapp.com/collection/lessons/" + this.searchTxt).then(
+            fetch("https://cwtwo-web.herokuapp.com/collection/lesson/" + this.searchTxt).then(
             (response) => {
                 response.json().then(
                     (data) => {
@@ -129,7 +128,7 @@ export default {
             })
         },
         checkOut: function (checkOutName, checkOutNumber) {
-            fetch('https://cst3145-cw2-backend.herokuapp.com/collection/orders', {
+            fetch('https://cwtwo-web.herokuapp.com/collection/order', {
                 method: 'POST', // set the HTTP method as 'POST'
                 headers: {
                     'Content-Type': 'application/json', // set the data type as JSON
@@ -143,12 +142,12 @@ export default {
 
             for (let index = 0; index < this.cartItems.length; index++) {
                 const lesson = this.cartItems[index].lesson;
-                fetch(`https://cst3145-cw2-backend.herokuapp.com/collection/lessons/${lesson._id}`, {
+                fetch(`https://cwtwo-web.herokuapp.com/collection/lesson/${lesson._id}`, {
                     method: 'PUT', // set the HTTP method as 'POST'
                     headers: {
                         'Content-Type': 'application/json', // set the data type as JSON
                     },
-                    body: JSON.stringify({ space: lesson.space}), // need to stringify the JSON object
+                    body: JSON.stringify({ availablespace: lesson.availablespace}), // need to stringify the JSON object
                 })
                     .then(response => response.json())
                     .then(responseJSON => {
@@ -176,7 +175,7 @@ export default {
     },
     
     created: function () {
-        fetch("https://cst3145-cw2-backend.herokuapp.com/collection/lessons").then(
+        fetch("https://cwtwo-web.herokuapp.com/collection/lesson/").then(
              (response) => {
                 response.json().then(
                      (data) => {

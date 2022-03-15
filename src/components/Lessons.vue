@@ -27,16 +27,16 @@
                                     <div class="row">
                                         <div class="col-md-6 subject-box">
                                             <P>Subject: {{lesson.topic}}<br> Location: {{lesson.location}}<br> Price: <span>&#163;{{lesson.price}}</span><br>
-                                                Spaces: {{lesson.space}} <br>  Icon: <span v-bind:class="lesson.icon"></span></P>
+                                                Spaces: {{lesson.availablespace}} <br>  Icon: <span v-bind:class="lesson.icon"></span></P>
                                                 
                                                
                                         </div>
                                         <div class="col-md-6">
-                                            <img v-bind:src="`https://cst3145-cw2-backend.herokuapp.com/${lesson.image}`" alt=""
+                                            <img v-bind:src="`https://cwtwo-web.herokuapp.com/${lesson.image}`" alt=""
                                                 style="width: 100px; height: 100px; margin-top: 20px">
                                         </div>
                                     </div>
-                                    <button v-bind:disabled="(lesson.space <= 0)" v-on:click="addLesson(lesson._id, lesson)" type="button" class="btn btn-1 btn-info" style="width: 100%">Add to
+                                    <button v-bind:disabled="(lesson.availablespace <= 0)" v-on:click="addLesson(lesson._id, lesson)" type="button" class="btn btn-1 btn-info" style="width: 100%">Add to
                                         Cart</button>
                                 </div>
                             </div>
@@ -56,6 +56,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'Lessons',
     props: ['lessons'],

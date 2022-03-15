@@ -1,4 +1,4 @@
-# cw3individual
+# bookstore
 
 ## Project setup
 ```
