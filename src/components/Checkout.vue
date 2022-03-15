@@ -30,7 +30,7 @@
                 <div class="container">
                     <div class="row check-out-row">
                         <div class="col-md-12">
-                            
+                            <h4 class="text-center mb-5">Checkout</h4>
                                 <div class="row">
                                     <div class="col">
                                         <input v-on:keyup="validateRegexCheckOut" type="text" class="form-control" placeholder="Enter your full name" v-model="checkOutName" >
