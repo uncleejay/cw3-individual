@@ -1,72 +1,58 @@
 <template>
-  <div class="mt-5">
-    <div v-if="showProduct">
-				<h2 class="text-center mt-5 mb-5"></h2>
-				<div class="container">
-					<div class="row">
-						<div class="col-md-2">
-						<aside>
-							<h6>Sort By</h6>
-							<div class="custom-control custom-radio">
-							  <input type="radio" id="subject" v-model="sort.sortingMethod" value="subject" name="" class="custom-control-input">
-							  <label class="custom-control-label" for="subject">Subject</label>
-							</div>
-							<div class="custom-control custom-radio">
-							  <input type="radio" id="location" v-model="sort.sortingMethod" value="location" name="" class="custom-control-input">
-							  <label class="custom-control-label" for="location">Location</label>
-							</div>
-							<div class="custom-control custom-radio mb-1">
-							  <input type="radio" id="price" v-model="sort.sortingMethod" value="price" name="" class="custom-control-input">
-							  <label class="custom-control-label" for="price">Price</label>
-							</div>
-							<div class="custom-control custom-radio mb-1">
-							  <input type="radio" id="availability" v-model="sort.sortingMethod" value="availability" name="" class="custom-control-input">
-							  <label class="custom-control-label" for="availability">Availability</label>
-							</div>
 
-							<!-- order by ascending or descedning order -->
-							<h6 class="mt-4">Order By</h6>
-							<div class="custom-control custom-radio mb-1">
-							  <input type="radio" id="ascending" v-model="sort.sortingOrder" value="ascending" name="" class="custom-control-input">
-							  <label class="custom-control-label" for="ascending">Ascending</label>
-							</div>
-							<div class="custom-control custom-radio mb-1">
-							  <input type="radio" id="descending" v-model="sort.sortingOrder" value="descending" name="" class="custom-control-input">
-							  <label class="custom-control-label" for="descending">Descending</label>
-							</div>
-							<!-- end of order by ascending or descending order -->
+      <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="dropdown show drop-down-1">
+                            <p>Sort by</p>
+                            <select class="btn select-btn-1 btn-info dropdown-toggle" style="width: 100%"  v-model="attribute">
+                                <option v-for="(sortAttribute, key) in sortAttributes" :key="sortAttribute" v-bind:value="sortAttribute">{{ key }}</option>
+                            </select>
 
-						</aside>
-						</div>
-						<!-- UI to display lesson items -->
-						<div class="col-md-10 row">
-              <div v-if="(lessons.length > 0)" class="">
-							<div v-for="(lesson) in sortedLessons" :key="lesson.id" class="col-md-4">
-							<div class="card mb-4">
-								<img class="card-img" v-bind:src="lesson.image" alt="Lesson Image">
-								<div class="card-body">
-									<h6>Subject: {{lesson.subject}}</h6>
-									<h6>Location: {{lesson.location}}</h6>
-									<h6>Available: {{lesson.availablespace - cartCount(lesson)}}</h6>
-									<h6>Price: £{{lesson.price}}</h6>
-									<h6>Rating: 
-										<!-- <span v-for="n in lesson.rating">★</span>
-                    					<span v-for="n in 5 - lesson.rating">☆</span> -->
-									</h6>
-									<button v-on:click="addToCart(lesson)" v-if="canAddToCart(lesson)" class="btn btn-primary">Add to Cart</button>
-									<!-- disable cart -->
-									<button class="btn btn-primary" v-bind:disabled="(lesson.space <= 0)" v-on:click="addLesson(lesson._id, lesson)">Add to Cart</button>
-									<!-- End of disable cart -->
-								</div>
-							</div>
-						</div>
-              </div>
-						</div>
-						<!-- end of UI to display lesson items -->
-					</div>
-				</div>
-			</div>
-  </div>
+                        </div>
+
+                        <div class="dropdown show drop-down-2">
+                            <select class="btn select-btn-2 btn-info dropdown-toggle" style="width: 100%" v-model="order">
+                                <option v-for="(sortOrder, key) in sortOrders" :key="sortOrder" v-bind:value="sortOrder">{{ key }}</option>
+                            </select>
+                        </div>
+                    </div>
+                   <div class="col-md-10">
+                      
+                        <div v-if="(lessons.length > 0)" class="row grid-1">
+
+                            
+                            <div v-for="(lesson) in sortedLessons" :key="lesson.id" class="col-md-4" style="margin-bottom: 20px;">
+                                <div class="col-md-12 subject-1">
+                                    <div class="row">
+                                        <div class="col-md-6 subject-box">
+                                            <P>Subject: {{lesson.topic}}<br> Location: {{lesson.location}}<br> Price: <span>&#163;{{lesson.price}}</span><br>
+                                                Spaces: {{lesson.space}} <br>  Icon: <span v-bind:class="lesson.icon"></span></P>
+                                                
+                                               
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img v-bind:src="`https://cst3145-cw2-backend.herokuapp.com/${lesson.image}`" alt=""
+                                                style="width: 100px; height: 100px; margin-top: 20px">
+                                        </div>
+                                    </div>
+                                    <button v-bind:disabled="(lesson.space <= 0)" v-on:click="addLesson(lesson._id, lesson)" type="button" class="btn btn-1 btn-info" style="width: 100%">Add to
+                                        Cart</button>
+                                </div>
+                            </div>
+                            
+
+                           
+
+                        </div>
+                        <div v-else class="row grid-1">
+                            <p style="margin: auto;">No result found</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    
 </template>
 
 <script>
