@@ -1,5 +1,5 @@
 <template>
-    <div>
+     <div>
          <div class="container">
                 <div v-if="(cartItems.length > 0)" class="row">
 
