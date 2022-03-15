@@ -1,4 +1,4 @@
-# bookstore
+# Lesson Shop
 
 ## Project setup
 ```
