@@ -1,31 +1,45 @@
 <template>
   <div id="app">
-    <div class="jumbotron">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-2">
-						<h2 class="logo">Lesson</h2>
-					</div>
-					<div class="col-md-6">
-						<form>
-							<input type="text" class="form-control" v-model="term" v-on:keyup="searchLessons" placeholder="Search">
-						</form>
-					</div>
-					<div class="col-md-4">
-						<!-- Hides and shows the cart depending on whether or not it is empty -->
-						<button class="cart-btn btn btn-primary" v-if="cartItemCount === ''" hidden><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
-						<button class="cart-btn btn btn-primary" v-on:click="showShoppingCartPage()" v-else><i class="fa fa-shopping-cart"></i> Cart {{cartItemCount}}</button>
-						<!-- End of Hides and shows the cart depending on whether or not it is empty -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<nav aria-label="breadcrumb">
-		  <ol class="breadcrumb">
-		    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-		    <li class="breadcrumb-item active" aria-current="page">{{homepage}}</li>
-		  </ol>
-		</nav>
+
+
+    <section id="search-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h2>MDX Book Store</h2>
+                    </div>
+                    <div class="col-md-7">
+                        
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search" v-on:keyup="searchLessons" v-model="searchTxt">
+                       
+                    </div>
+                    <div class="col-md-2 cart">
+                        <button class="btn btn-1 btn-info" v-bind:disabled="(cartItems.length <= 0)"
+                        v-on:click="updateShowProduct"><p class="fa fa-shopping-cart mt-2" style="color: white;"></p> <span
+                            style="color: white">{{cartCount()}}</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Home | Store</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section v-if="showProduct" id="product">
+            <Lessons :lessons="lessons" v-on:addLesson="addLessonToCart"></Lessons>
+        </section>
+
+        <section v-else id="check-out">
+            <Checkout :cartItems="cartItems" v-on:removeLesson="removeLessonFromCart" v-on:checkOut="checkOut"></Checkout>
+            
+        </section>
   </div>
 </template>
 
