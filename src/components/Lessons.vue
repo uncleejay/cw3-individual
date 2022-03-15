@@ -4,7 +4,7 @@
                 <div class="row">
                     <div class="col-md-2">
                         <div class="dropdown show drop-down-1">
-                            <p>Sort by</p>
+                            <p><strong>Sort by</strong></p>
                             <select class="btn select-btn-1 btn-info dropdown-toggle" style="width: 100%"  v-model="attribute">
                                 <option v-for="(sortAttribute, key) in sortAttributes" :key="sortAttribute" v-bind:value="sortAttribute">{{ key }}</option>
                             </select>
@@ -12,7 +12,7 @@
                         </div>
 
                         <div class="dropdown show drop-down-2">
-                            <p>Order by</p>
+                            <p><strong>Order by</strong></p>
                             <select class="btn select-btn-2 btn-info dropdown-toggle" style="width: 100%" v-model="order">
                                 <option v-for="(sortOrder, key) in sortOrders" :key="sortOrder" v-bind:value="sortOrder">{{ key }}</option>
                             </select>
@@ -27,7 +27,7 @@
                                 <div class="col-md-12 subject-1">
                                     <div class="row">
                                         <div class="col-md-6 subject-box">
-                                            <P>Subject: {{lesson.topic}}<br> Location: {{lesson.location}}<br> Price: <span>&#163;{{lesson.price}}</span><br>
+                                            <P>Subject: {{lesson.subject}}<br> Location: {{lesson.location}}<br> Price: <span>&#163;{{lesson.price}}</span><br>
                                                 Spaces: {{lesson.availablespace}} <br>  Rating: <span v-bind:class="lesson.icon">★★★★★</span></P>
                                                 
                                                
