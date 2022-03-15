@@ -27,7 +27,7 @@
                                     <div class="row">
                                         <div class="col-md-6 subject-box">
                                             <P>Subject: {{lesson.topic}}<br> Location: {{lesson.location}}<br> Price: <span>&#163;{{lesson.price}}</span><br>
-                                                Spaces: {{lesson.availablespace}} <br>  Icon: <span v-bind:class="lesson.icon"></span></P>
+                                                Spaces: {{lesson.availablespace}} <br>  Rating: <span v-bind:class="lesson.icon">★★★★★</span></P>
                                                 
                                                
                                         </div>
