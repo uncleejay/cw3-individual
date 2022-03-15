@@ -26,16 +26,17 @@
                             <div v-for="(lesson) in sortedLessons" :key="lesson.id" class="col-md-4" style="margin-bottom: 20px;">
                                 <div class="col-md-12 subject-1">
                                     <div class="row">
-                                        <div class="col-md-6 subject-box">
+                                        <div class="card-img">
+                                            <img v-bind:src="`https://cwtwo-web.herokuapp.com/${lesson.image}`" alt=""
+                                                style="width: 100px; height: 100px; margin-top: 20px">
+                                        </div>
+                                        <div class="card-body subject-box">
                                             <P>Subject: {{lesson.subject}}<br> Location: {{lesson.location}}<br> Price: <span>&#163;{{lesson.price}}</span><br>
                                                 Spaces: {{lesson.availablespace}} <br>  Rating: <span v-bind:class="lesson.icon">★★★★★</span></P>
                                                 
                                                
                                         </div>
-                                        <div class="col-md-6">
-                                            <img v-bind:src="`https://cwtwo-web.herokuapp.com/${lesson.image}`" alt=""
-                                                style="width: 100px; height: 100px; margin-top: 20px">
-                                        </div>
+                                        
                                     </div>
                                     <button v-bind:disabled="(lesson.availablespace <= 0)" v-on:click="addLesson(lesson._id, lesson)" type="button" class="btn btn-1 btn-info" style="width: 100%">Add to
                                         Cart</button>
