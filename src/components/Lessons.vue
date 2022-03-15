@@ -12,6 +12,7 @@
                         </div>
 
                         <div class="dropdown show drop-down-2">
+                            <p>Order by</p>
                             <select class="btn select-btn-2 btn-info dropdown-toggle" style="width: 100%" v-model="order">
                                 <option v-for="(sortOrder, key) in sortOrders" :key="sortOrder" v-bind:value="sortOrder">{{ key }}</option>
                             </select>
