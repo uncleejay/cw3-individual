@@ -6,7 +6,7 @@
 
 #search-bar h2 {
     font-family: cursive;
-    color: #408497;
+    color: #FC641D;
 }
 
 #search-bar .form-control {
@@ -43,28 +43,28 @@
 }
 
 #product .subject-1 {
-    border: 1px solid #408497;
+    border: 1px solid rgba(0,0,0,.125);
     border-radius: 20px;
     padding-top: 20px;
     padding-bottom: 30px;
 }
 
 #product .subject-2 {
-    border: 1px solid #408497;
+    border: 1px solid rgba(0,0,0,.125);
     border-radius: 20px;
     padding-top: 20px;
     padding-bottom: 30px;
 }
 
 #product .subject-3 {
-    border: 1px solid #408497;
+    border: 1px solid rgba(0,0,0,.125);
     border-radius: 20px;
     padding-top: 20px;
     padding-bottom: 30px;
 }
 
 #product .subject-4 {
-    border: 1px solid #408497;
+    border: 1px solid rgba(0,0,0,.125);
     border-radius: 20px;
     padding-top: 20px;
     padding-bottom: 30px;
@@ -75,14 +75,14 @@
 .check-out-2,
 .check-out-3,
 .check-out-4 {
-    border: 1px solid #408497;
+    border: 1px solid rgba(0,0,0,.125);
     border-radius: 20px;
     padding-top: 20px;
     padding-bottom: 30px;
 }
 
 #product .subject-6 {
-    border: 1px solid #408497;
+    border: 1px solid rgba(0,0,0,.125);
     border-radius: 20px;
     padding-top: 20px;
     padding-bottom: 30px;
