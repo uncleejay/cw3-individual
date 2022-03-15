@@ -10,8 +10,7 @@
 }
 
 #search-bar .form-control {
-    background: #CACACA;
-    border: none;
+    border: 1px solid #ced4da;
 }
 
 #search-bar .form-control {
@@ -31,7 +30,7 @@
 }
 
 #product .drop-down-1 {
-    margin-bottom: 150px;
+    margin-bottom: 80px;
 }
 
 #product .drop-2 {
